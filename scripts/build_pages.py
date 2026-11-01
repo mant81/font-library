@@ -25,7 +25,7 @@ def build():
         if not (OUT/'.font-library-generated').is_file():raise ValueError('Refusing to replace unrecognized _site directory')
         shutil.rmtree(OUT)
     OUT.mkdir();(OUT/'.font-library-generated').write_text('generated\n')
-    for name in ['index.html','style.css','app.js','favicon.svg']:shutil.copy2(ROOT/'site'/name,OUT/name)
+    for name in ['index.html','style.css','app.js','favicon.svg','copyright.html']:shutil.copy2(ROOT/'site'/name,OUT/name)
     (OUT/'.nojekyll').write_text('')
     catalog=[]
     for config in sorted((ROOT/'fonts').glob('*/config/font.json')):
@@ -45,12 +45,14 @@ def build():
         paths={'woff':f'{base}/{prefix}-Regular.woff2','small_woff':f'{base}/{prefix}Small-Regular.woff2',
                'ttf':f'{base}/{prefix}-Regular.ttf','specimen':f'fonts/{font_id}/examples/web/'}
         if any(not (OUT/path).exists() for path in paths.values()):raise ValueError(f'Missing public assets for {font_id}')
+        for key in ['woff','small_woff','ttf']:
+            paths[key]+='?v='+urllib.parse.quote(cfg['version'])
         version=cfg['android_version_name'];apk_name=f'{font_id}-font-preview-{version}.apk'
         meta=json.loads((dist/'android/apk-manifest.json').read_text(encoding='utf-8'))
         apk=dist/'android'/apk_name
         if hashlib.sha256(apk.read_bytes()).hexdigest()!=meta['sha256']:raise ValueError('APK digest mismatch')
         tag=f'{font_id}-v{version}'
-        catalog.append(dict(id=font_id,name=cfg['display_name'],family=cfg['family'],version=cfg['version'],
+        catalog.append(dict(id=font_id,name=cfg['display_name'],english_name=cfg.get('english_name',cfg['family']),family=cfg['family'],version=cfg['version'],
              apk=f'https://github.com/{REPOSITORY}/releases/download/{tag}/{apk_name}',
              release=f'https://github.com/{REPOSITORY}/releases/tag/{tag}',apk_sha256=meta['sha256'],**paths))
     if not catalog:raise ValueError('No fonts available')

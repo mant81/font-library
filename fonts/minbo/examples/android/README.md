@@ -1,6 +1,6 @@
-# minbo체 Android 앱 / APK
+# 민보체 Android 앱 / APK
 
-설치 파일: [minbo체 APK](../../dist/android/minbo-font-preview-0.1.1.apk). 저장소 기준 경로는 `fonts/minbo/dist/android/minbo-font-preview-0.1.1.apk`다.
+설치 파일: [민보체 APK](../../dist/android/minbo-font-preview-0.1.2.apk). 저장소 기준 경로는 `fonts/minbo/dist/android/minbo-font-preview-0.1.2.apk`다.
 
 Android 8.0(API 26) 이상에서 설치하는 서체 미리보기 앱이다. 문장 입력, 7–72sp 크기 조절, 작은 글자용 보정본 전환, 예제 문장 복원을 제공한다. 인터넷·저장소 등 별도 앱 권한을 요청하지 않는다. 휴대폰의 시스템 기본 글꼴 설정은 변경하지 않는다.
 

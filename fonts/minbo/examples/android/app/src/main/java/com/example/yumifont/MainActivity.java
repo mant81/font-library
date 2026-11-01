@@ -21,7 +21,7 @@ import java.text.Normalizer;
 
 /** Offline handwriting preview, Android 8.0+. No device font settings are changed. */
 public class MainActivity extends Activity {
-    private static final String SAMPLE = "안녕하세요, minbo체 손글씨입니다.\n오늘의 작은 기록이 내일의 추억으로.\nHello Minbo! 0123456789 .,!?";
+    private static final String SAMPLE = "안녕하세요, 민보체 손글씨입니다.\n오늘의 작은 기록이 내일의 추억으로.\nHello minbo font! 0123456789 .,!?";
     private static final int INK = Color.rgb(41, 46, 42);
     private static final int GREEN = Color.rgb(57, 93, 69);
     private Typeface regular;
@@ -68,10 +68,10 @@ public class MainActivity extends Activity {
         column.setOrientation(LinearLayout.VERTICAL);
         column.setFocusableInTouchMode(true);
         column.setPadding(dp(24), dp(16), dp(24), dp(32));
-        TextView title = text("minbo체", 36);
+        TextView title = text("민보체", 36);
         title.setTypeface(regular);
         column.addView(title);
-        TextView subtitle = text("손끝에서, 글자로.  ·  0.1 시험판", 13);
+        TextView subtitle = text("minbo font  ·  0.1.2 시험판", 13);
         subtitle.setTextColor(GREEN);
         column.addView(subtitle);
         column.addView(text("내 문장 미리보기", 17));
@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
         preview.setBackgroundColor(Color.WHITE);
         preview.setPadding(dp(16), dp(16), dp(16), dp(16));
         preview.setLineSpacing(dp(5), 1.2f);
-        preview.setContentDescription("minbo체로 표시한 문장");
+        preview.setContentDescription("민보체로 표시한 문장");
         column.addView(preview);
         LinearLayout actions = new LinearLayout(this);
         Button tiny = new Button(this);

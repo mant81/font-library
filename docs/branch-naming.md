@@ -1,12 +1,12 @@
 # 브랜치·폰트 명명 규칙
 
-여러 폰트를 하나의 `main` 브랜치에 계속 추가한다. 폰트는 `fonts/<font-id>/` 폴더로 구분한다. 폰트 식별자는 영문 소문자와 하이픈을 사용한다. 현재 폰트는 `minbo`, 표시 이름은 `minbo체`, 영문 family는 `Minbo`다.
+여러 폰트를 하나의 `main` 브랜치에 계속 추가한다. 폰트는 `fonts/<font-id>/` 폴더로 구분한다. 폰트 식별자는 영문 소문자와 하이픈을 사용한다. 현재 폰트는 `minbo`, 표시 이름은 `민보체`, 영문 family는 `minbo font`다.
 
 | 용도 | 브랜치 |
 |---|---|
 | 기본 | `main` |
 | 여러 폰트의 공통 기능 | `feat/multi-font-support` |
-| minbo체 개발·추가 | `feat/fonts/minbo` |
+| 민보체 개발·추가 | `feat/fonts/minbo` |
 | 다른 폰트 추가 | `feat/fonts/<font-id>` |
 | 특정 폰트 수정 | `fix/fonts/<font-id>/<issue>` |
 

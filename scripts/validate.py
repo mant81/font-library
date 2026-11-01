@@ -101,13 +101,13 @@ def validate():
     # PIL/FreeType overview supplements actual browser checks; never label it browser evidence.
     sheet=Image.new('RGB',(1300,700),'white'); d=ImageDraw.Draw(sheet)
     y=20
-    sample='안녕하세요 minbo체 한글과 영문 꽃 빛 삶 꿈 읽다 괜찮아 | Hello Minbo! 0123456789'
+    sample='안녕하세요 민보체 한글과 영문 꽃 빛 삶 꿈 읽다 괜찮아 | Hello Minbo! 0123456789'
     for size in [7,9,12,16,24,40]:
         d.text((20,y),f'{size}px',fill='#586c5e'); y+=25
         font=ImageFont.truetype(str(ROOT/f'dist/{CFG["file_prefix"]}Small-Regular.ttf' if size<=15 else ttf),size)
         d.text((20,y),sample,font=font,fill='black'); y+=max(45,size*2)
     sheet.save(ROOT/'docs/render-freetype.png')
-    html='''<!doctype html><html lang="ko"><meta charset="utf-8"><title>minbo체 전체 검토</title>
+    html='''<!doctype html><html lang="ko"><meta charset="utf-8"><title>민보체 전체 검토</title>
 <link rel="stylesheet" href="minbo.css"><link rel="stylesheet" href="minbo-small.css">
 <style>body{margin:30px;background:#faf8f1;color:#20251f;font:14px system-ui}nav{position:sticky;top:0;background:#faf8f1;padding:15px;border-bottom:1px solid #ccc}.glyphs{font:30px/1.8 'Minbo';display:grid;grid-template-columns:repeat(auto-fill,52px)}.glyphs span{padding:3px}.glyphs small{display:block;font:9px system-ui;color:#777}h2{font:16px system-ui}</style>
 <nav><a href="../examples/web/">← 미리보기</a> · 전체 11,172자 · 검토 대기 <label> 크기 <select id="size"><option>30</option><option>7</option><option>12</option><option>48</option></select>px</label></nav><p>자동 생성 검토표입니다. 생성은 시각 검토 통과를 의미하지 않습니다.</p>'''

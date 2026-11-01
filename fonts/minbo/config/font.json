@@ -1,6 +1,6 @@
 {
-  "version": "0.1.1",
-  "family": "Minbo",
+  "version": "0.1.2",
+  "family": "minbo font",
   "upm": 1000,
   "stroke": 42,
   "small_stroke": 78,
@@ -9,9 +9,12 @@
   "minimum_css_px": 7,
   "review_status": "experimental-not-visually-approved",
   "id": "minbo",
-  "display_name": "minbo체",
+  "display_name": "민보체",
   "file_prefix": "Minbo",
-  "font_revision": "0.101",
-  "android_version_code": 2,
-  "android_version_name": "0.1.1"
+  "font_revision": "0.102",
+  "android_version_code": 3,
+  "android_version_name": "0.1.2",
+  "english_name": "minbo font",
+  "source_statement": "Independently built from original handwriting supplied by the user; no third-party font outlines imported.",
+  "usage_permissions": "not-yet-specified"
 }

@@ -363,8 +363,8 @@ class Composer:
         fb.setupHorizontalHeader(ascent=950,descent=-250,lineGap=0)
         fb.setupNameTable({'familyName':family,'styleName':'Regular','uniqueFontIdentifier':f'{family} {CFG["version"]}',
                           'fullName':f'{family} Regular','psName':family.replace(' ','')+'-Regular',
-                          'version':f'Version {float(CFG["font_revision"]):.3f}','description':'Experimental font traced from user supplied handwriting; visual review pending.',
-                          'licenseDescription':'Distribution license pending; no third-party font outlines used.'})
+                          'version':f'Version {float(CFG["font_revision"]):.3f}','description':CFG.get('source_statement','Font built from supplied handwriting.')+' Visual style review pending.',
+                          'licenseDescription':'Commercial use, modification and redistribution permissions are not yet specified. No third-party font outlines used.'})
         localized=CFG['display_name']+(' Small' if family.endswith(' Small') else '')
         fb.font['name'].setName(localized,1,3,1,0x412)
         fb.font['name'].setName(localized+' Regular',4,3,1,0x412)
