@@ -114,6 +114,12 @@ SHA-256: `{digest}`
         if asset.get('digest') and asset['digest']!='sha256:'+sha:raise ValueError('Server asset checksum mismatch')
         uploaded.append({'name':file.name,'bytes':asset['size'],'sha256':sha,'url':asset['browser_download_url']})
     release=api.request('PATCH',base+f'/releases/{release["id"]}',{'draft':False,'prerelease':True,'body':body,'make_latest':'false'})
+    # Draft asset URLs use an untagged placeholder. Refresh canonical URLs
+    # after publication instead of returning those temporary upload-time links.
+    published_assets={asset['name']:asset for asset in release.get('assets',[])}
+    for item in uploaded:
+        if item['name'] in published_assets:
+            item['url']=published_assets[item['name']]['browser_download_url']
     result={'repository':api.repo,'tag':tag,'url':release['html_url'],'commit':commit,'assets':uploaded,'prerelease':True}
     folder=ROOT/'_workspace/publication';folder.mkdir(parents=True,exist_ok=True)
     (folder/'release.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
