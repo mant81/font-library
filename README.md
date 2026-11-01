@@ -1,6 +1,6 @@
 # Font Library
 
-[웹사이트](https://mant81.github.io/font-library/) · [APK 릴리즈](https://github.com/mant81/font-library/releases/tag/minbo-v0.1.2)
+[웹사이트](https://mant81.github.io/font-library/) · [APK 릴리즈](https://github.com/mant81/font-library/releases/tag/minbo-v0.1.3)
 
 하나의 `main` 브랜치에서 여러 폰트를 폴더별로 관리한다. 각 폰트의 원본·설정·글리프·배포물·문서·예제는 `fonts/<font-id>/` 안에 둔다.
 
@@ -24,7 +24,7 @@ docs/                    저장소 공통 규칙
 
 | ID | 이름 | 안내 | 웹 미리보기 | Android APK |
 |---|---|---|---|---|
-| `minbo` | 민보체 | [폰트 안내](fonts/minbo/README.md) | [미리보기](http://127.0.0.1:8765/fonts/minbo/examples/web/) | [0.1.2 APK](fonts/minbo/dist/android/minbo-font-preview-0.1.2.apk) |
+| `minbo` | 민보체 | [폰트 안내](fonts/minbo/README.md) | [미리보기](http://127.0.0.1:8765/fonts/minbo/examples/web/) | [0.1.3 APK](fonts/minbo/dist/android/minbo-font-preview-0.1.3.apk) |
 
 ## 실행
 
@@ -68,4 +68,8 @@ python scripts/build_pages.py
 python -m http.server 8765 --bind 127.0.0.1 --directory _site
 ```
 
-`main`에 push하면 `.github/workflows/pages.yml`이 GitHub Pages를 배포한다. APK는 검증한 파일과 SHA-256을 함께 GitHub Release에 첨부한다. 폰트별 태그는 `<font-id>-v<version>`이며, 현재 시험판은 `minbo-v0.1.2`이다. Actions의 **Publish Android APK Release**를 수동 실행하거나, 인증된 로컬 환경에서 `python scripts/publish_release.py --font minbo`를 실행한다. 버전이 같으면서 내용이 다른 기존 릴리즈 파일은 덮어쓰지 않는다.
+`main`에 push하면 `.github/workflows/pages.yml`이 GitHub Pages를 배포한다. APK는 검증한 파일과 SHA-256을 함께 GitHub Release에 첨부한다. 폰트별 태그는 `<font-id>-v<version>`이며, 현재 시험판은 `minbo-v0.1.3`이다. Actions의 **Publish Android APK Release**를 수동 실행하거나, 인증된 로컬 환경에서 `python scripts/publish_release.py --font minbo`를 실행한다. 버전이 같으면서 내용이 다른 기존 릴리즈 파일은 덮어쓰지 않는다.
+
+## 민보체 / minbo font 이용 조건
+
+개인·기업·관공서는 비상업적 목적에 한하여 무료로 사용할 수 있습니다. 사용 주체와 관계없이 상업적 이용은 금지합니다. [전체 라이선스](fonts/minbo/LICENSE.txt) · [저작권 검토](docs/copyright.md)

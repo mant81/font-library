@@ -52,9 +52,13 @@ RASTER = r'''async ({cps, family, dpr, offset}) => {
 }'''
 
 
+class FontServer(http.server.ThreadingHTTPServer):
+    request_queue_size=128
+
+
 def check():
     handler=functools.partial(QuietHandler,directory=str(REPO_ROOT))
-    server=http.server.ThreadingHTTPServer(('127.0.0.1',0),handler)
+    server=FontServer(('127.0.0.1',0),handler)
     threading.Thread(target=server.serve_forever,daemon=True).start()
     folder=ROOT/'docs/browser';folder.mkdir(parents=True,exist_ok=True)
     results=[];errors=[]

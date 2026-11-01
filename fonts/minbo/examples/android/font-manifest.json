@@ -2,11 +2,11 @@
   "files": {
     "minbo_regular.ttf": {
       "source": "dist/Minbo-Regular.ttf",
-      "sha256": "b222ee6da23253eeae2e7c45a96aac32acd25236313d30f411a939823f99755f"
+      "sha256": "1cfc234b43efdb206cd677e1e0ec9504ee780a1e8a16408d939a81cef5614c47"
     },
     "minbo_small.ttf": {
       "source": "dist/MinboSmall-Regular.ttf",
-      "sha256": "f19b008fe2cb4268a1564f07ef135feafd8b0d09abef2deeb399b1564507190e"
+      "sha256": "35cfed323ed659f4c8decf7fe68b4709bed2a3684813c6a32910517752dd2de0"
     }
   },
   "device_validation": "not run",

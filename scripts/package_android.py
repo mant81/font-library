@@ -18,6 +18,9 @@ def main():
         shutil.copyfile(source,dest)
         assert sha(source)==sha(dest)
         files[name]={'source':source.relative_to(ROOT).as_posix(),'sha256':sha(dest)}
+    if CFG.get('license_file'):
+        raw=target.parent/'raw';raw.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(ROOT/CFG['license_file'],raw/'font_license.txt')
     dump('examples/android/font-manifest.json',{'files':files,'device_validation':'not run','sample':'Java Activity; import into an Android app with minSdk 26 or newer'})
     print('Android TTF resources packaged; device test not run.')
 

@@ -87,7 +87,7 @@ def publish(font_id):
 - APK 서명·정렬 검사 및 Android 36 에뮬레이터 설치·실행·입력 검증 통과
 - 휴대폰 전체의 시스템 기본 글꼴을 바꾸는 패키지는 아닙니다.
 
-APK를 휴대폰에 내려받아 열고 설치하세요. 로컬 시험용 인증서로 서명했으며 실제 휴대폰 검증과 전수 가독성 검토는 남아 있습니다. 직접 쓴 손글씨를 바탕으로 독자 제작했습니다. 상업적 사용·수정·재배포의 이용허락 조건은 별도 결정 대상이며, 저작권 보호 범위와 혼동하지 않습니다. 실제 문장 표본 검토에서 자모 간격·받침 형태·마침표 크기의 보정 필요성을 확인했으며, 이 버전은 필체 재현 완료판이 아닌 자모 조합 시험판입니다.
+APK를 휴대폰에 내려받아 열고 설치하세요. 로컬 시험용 인증서로 서명했으며 실제 휴대폰 검증과 전수 가독성 검토는 남아 있습니다. 직접 쓴 손글씨를 바탕으로 독자 제작했습니다. 개인·기업·관공서의 비상업적 사용은 무료이며, 상업적 이용은 금지합니다. 전체 이용 조건은 첨부한 LICENSE.txt와 [라이선스 안내](https://mant81.github.io/font-library/license.html)를 확인하세요. 실제 문장 표본 검토에서 자모 간격·받침 형태·마침표 크기의 보정 필요성을 확인했으며, 이 버전은 필체 재현 완료판이 아닌 자모 조합 시험판입니다.
 
 SHA-256: `{digest}`
 
@@ -100,7 +100,9 @@ SHA-256: `{digest}`
             'name':f"{cfg['display_name']} / {cfg.get('english_name',cfg['family'])} {version} · 시험판",'body':body,'draft':True,'prerelease':True,'make_latest':'false'})
     existing={a['name']:a for a in release.get('assets',[])}
     uploaded=[]
-    for file in [apk,checksum]:
+    files=[apk,checksum]
+    if cfg.get('license_file'):files.append(font/cfg['license_file'])
+    for file in files:
         content=file.read_bytes();sha=hashlib.sha256(content).hexdigest()
         if file.name in existing:
             asset=existing[file.name]

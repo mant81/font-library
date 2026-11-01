@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
         TextView title = text("민보체", 36);
         title.setTypeface(regular);
         column.addView(title);
-        TextView subtitle = text("minbo font  ·  0.1.2 시험판", 13);
+        TextView subtitle = text("minbo font  ·  0.1.3 시험판", 13);
         subtitle.setTextColor(GREEN);
         column.addView(subtitle);
         column.addView(text("내 문장 미리보기", 17));
@@ -133,6 +133,14 @@ public class MainActivity extends Activity {
         TextView footnote = text("한글 11,172자 · 영문 대소문자 지원\n15sp 이하에서는 작은 글자용 보정본을 자동 선택합니다.\n이 앱 안에서 손글씨를 미리볼 수 있습니다.", 12);
         footnote.setTextColor(Color.rgb(108, 116, 107));
         column.addView(footnote);
+        column.addView(text("개인·기업·관공서 비상업적 사용 무료 · 상업적 이용 금지", 12));
+        Button licenseButton = new Button(this);
+        licenseButton.setText("폰트 라이선스");
+        licenseButton.setAllCaps(false);
+        licenseButton.setOnClickListener(v -> new android.app.AlertDialog.Builder(this)
+            .setTitle("민보체 / minbo font 라이선스")
+            .setMessage(readFontLicense()).setPositiveButton("확인", null).show());
+        column.addView(licenseButton);
 
         seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
@@ -162,6 +170,18 @@ public class MainActivity extends Activity {
         setContentView(scroll);
         column.requestFocus();
         updatePreview();
+    }
+
+    private String readFontLicense() {
+        try (java.io.InputStream stream = getResources().openRawResource(R.raw.font_license);
+             java.io.ByteArrayOutputStream bytes = new java.io.ByteArrayOutputStream()) {
+            byte[] buffer = new byte[4096];
+            int count;
+            while ((count = stream.read(buffer)) != -1) bytes.write(buffer, 0, count);
+            return new String(bytes.toByteArray(), java.nio.charset.StandardCharsets.UTF_8);
+        } catch (java.io.IOException exception) {
+            throw new IllegalStateException("Font license could not be read", exception);
+        }
     }
 
     @Override protected void onSaveInstanceState(Bundle outState) {

@@ -102,7 +102,7 @@ def main():
             found=next((node for node in tree.iter('node') if node.get('text','').casefold()=='7sp 확인' and node.get('clickable')=='true'),None)
             if found is not None:
                 coords=list(map(int,re.findall(r'\d+',found.get('bounds',''))))
-                if len(coords)==4 and coords[3]>coords[1]:break
+                if len(coords)==4 and 80 < coords[1] < coords[3] < 1190:break
             found=None
             command(['shell','input','swipe','690','1050','690','450','450']);time.sleep(.7)
         if found is None:raise RuntimeError('7sp button not accessible')
@@ -121,10 +121,29 @@ def main():
         x0,y0,x1,y1=map(int,re.findall(r'\d+',edit.get('bounds')))
         command(['shell','input','tap',str((x0+x1)//2),str((y0+y1)//2)])
         command(['shell','input','text','APK_test123'])
-        command(['shell','input','keyevent','KEYCODE_BACK']);time.sleep(.7)
+        time.sleep(.7)  # Hardware keyboard: BACK would close the Activity when no IME is shown.
         xml=ui();(evidence/'ui-input.xml').write_text(xml,encoding='utf-8')
         if xml.count('APK_test123')<2:raise RuntimeError('Typed text did not update the live preview')
         report['live_text_input']='pass'
+        if CONFIG.get('license_file'):
+            license_node = None
+            for attempt in range(8):
+                current=ET.fromstring(ui())
+                license_node=next((n for n in current.iter('node') if n.get('text')=='폰트 라이선스' and n.get('clickable')=='true'),None)
+                if license_node is not None:
+                    bounds=list(map(int,re.findall(r'\d+',license_node.get('bounds',''))))
+                    if len(bounds)==4 and 80 < bounds[1] < bounds[3] < 1190:break
+                license_node=None
+                command(['shell','input','swipe','690','1050','690','350','350']);time.sleep(.6)
+            if license_node is None:raise RuntimeError('Font license button not accessible')
+            x0,y0,x1,y1=map(int,re.findall(r'\d+',license_node.get('bounds')))
+            command(['shell','input','tap',str((x0+x1)//2),str((y0+y1)//2)]);time.sleep(.7)
+            license_xml=ui()
+            (evidence/'ui-license.xml').write_text(license_xml,encoding='utf-8')
+            if '비상업적' not in license_xml or '상업적 이용은 금지' not in license_xml:
+                raise RuntimeError('Non-commercial license terms missing from the app dialog')
+            (evidence/'app-license.png').write_bytes(command(['exec-out','screencap','-p'],binary=True))
+            report['font_license_dialog']='pass'
         crash=command(['logcat','-d','-b','crash'])
         (evidence/'crash-log.txt').write_text(crash,encoding='utf-8')
         if 'FATAL EXCEPTION' in crash:raise RuntimeError('App crash logged')

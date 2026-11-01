@@ -25,7 +25,7 @@ def build():
         if not (OUT/'.font-library-generated').is_file():raise ValueError('Refusing to replace unrecognized _site directory')
         shutil.rmtree(OUT)
     OUT.mkdir();(OUT/'.font-library-generated').write_text('generated\n')
-    for name in ['index.html','style.css','app.js','favicon.svg','copyright.html']:shutil.copy2(ROOT/'site'/name,OUT/name)
+    for name in ['index.html','style.css','app.js','favicon.svg','copyright.html','license.html']:shutil.copy2(ROOT/'site'/name,OUT/name)
     (OUT/'.nojekyll').write_text('')
     catalog=[]
     for config in sorted((ROOT/'fonts').glob('*/config/font.json')):
@@ -38,7 +38,7 @@ def build():
             if file.is_file() and file.suffix in ('.woff2','.ttf','.css'):
                 destination=target/file.relative_to(dist);destination.parent.mkdir(parents=True,exist_ok=True)
                 shutil.copy2(file,destination)
-        for name in ['USAGE.md','review.html']:
+        for name in ['USAGE.md','review.html','LICENSE.txt']:
             if (dist/name).exists():shutil.copy2(dist/name,target/name)
         shutil.copytree(font/'examples/web',OUT/'fonts'/font_id/'examples/web')
         prefix=cfg['file_prefix'];base=f'fonts/{font_id}/dist'
