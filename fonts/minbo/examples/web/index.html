@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>minbo체 · 손글씨 시험실</title>
+<link rel="stylesheet" href="../../dist/minbo-subset.css">
+<link rel="stylesheet" href="../../dist/minbo-small-subset.css">
+<style>
+:root{color-scheme:light;--ink:#292e2a;--muted:#6c746b;--paper:#faf8f1;--line:#dcded1;--green:#395d45}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:48px 28px}header{border-top:3px solid var(--ink);padding-top:18px;display:flex;justify-content:space-between;gap:20px}.eyebrow{letter-spacing:.14em;font-size:11px;color:var(--green);font-weight:700}h1{font-size:38px;letter-spacing:-2px;line-height:1.3;margin:12px 0}p{margin:8px 0;color:var(--muted)}.badge{border:1px solid var(--line);border-radius:50px;padding:5px 13px;font-size:12px;white-space:nowrap;height:32px}section{margin-top:36px}.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}label{display:flex;align-items:center;gap:8px;font-size:13px}input[type=range]{accent-color:var(--green);width:170px}select,button{font:inherit;border:1px solid var(--line);background:transparent;padding:7px 12px;border-radius:4px;color:var(--ink)}button{cursor:pointer}textarea{display:block;resize:vertical;width:100%;min-height:250px;margin-top:20px;padding:30px 24px;color:var(--ink);background:repeating-linear-gradient(transparent,transparent 47px,#dedfce 48px);border:1px solid var(--line);border-radius:5px;line-height:1.8;font-family:'Minbo',sans-serif;font-size:40px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.card{border:1px solid var(--line);padding:24px;border-radius:5px;overflow-wrap:anywhere}.card h2{font:600 12px system-ui;letter-spacing:.08em;margin:0 0 20px;color:var(--green)}.sample{font:28px/1.9 'Minbo',sans-serif}.tiny{font:7px/2 'Minbo Small',sans-serif;white-space:pre-wrap}.tiny-wrap{overflow:auto;padding:20px;border:1px solid var(--line);background:white}.note{font-size:12px}a{color:var(--green);text-underline-offset:3px}.links{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px}footer{margin-top:45px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--muted)}#font-state{font-size:12px}#font-state[data-error]{color:#a13226}.sizes{display:flex;gap:8px}.sizes button{font-size:12px;padding:3px 9px}@media(max-width:650px){main{padding:28px 18px}.grid{grid-template-columns:1fr}header{display:block}.badge{display:inline-block}h1{font-size:32px}.toolbar{gap:12px}textarea{padding:18px;min-height:220px}}
+</style>
+<main>
+<header><div><div class="eyebrow">MINBO / TYPE SPECIMEN 0.1</div><h1>손끝에서, 글자로.</h1><p>minbo체 손글씨로 만든 한글과 영문 서체.</p></div><span class="badge">시각 검토 중 · 시험판</span></header>
+<section aria-label="서체 미리보기">
+<div class="toolbar">
+<label for="size">글자 크기 <input id="size" type="range" min="7" max="96" value="40"><output id="size-value" for="size">40px</output></label>
+<label for="variant">서체 <select id="variant"><option value="auto">자동 · 15px 이하 작은 글자용</option><option value="regular">손글씨 원형</option><option value="small">작은 글자용 보정</option></select></label>
+<div class="sizes"><button data-size="7">7px</button><button data-size="16">16px</button><button data-size="40">40px</button></div>
+</div>
+<textarea id="editor" aria-label="직접 입력하여 minbo체 확인" spellcheck="false">안녕하세요, minbo체 손글씨입니다.
+오늘의 작은 기록이 내일의 추억으로.
+Hello, Minbo! 0123456789</textarea>
+<p id="font-state" role="status">서체 불러오는 중…</p>
+</section>
+<section class="grid">
+<article class="card"><h2>01 / 한글 조합</h2><div class="sample">가나다라마바사아자차카타파하<br>꽃 빛 삶 꿈 읽다 앉다 괜찮아<br>과 왜 외 워 웨 위 의 꿰 뛴 쐐</div></article>
+<article class="card"><h2>02 / 영문 · 숫자 · 문장부호</h2><div class="sample">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789<br>.,!? :; () [] {} +- = @#%&amp;</div></article>
+</section>
+<section><div class="eyebrow">03 / 7PX ACTUAL SIZE</div><p class="note">아래는 확대하지 않은 실제 7px입니다. 작은 글자용 보정본을 사용합니다. 화면 배율과 픽셀 밀도에 따라 표현이 달라집니다.</p><div class="tiny-wrap"><div class="tiny">가나다라마바사아자차카타파하 · 꽃 빛 삶 꿈 읽다 앉다 괜찮아
+ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+Hello Minbo! 0123456789 .,!? () [] {} @#%&amp;</div></div></section>
+<section><div class="eyebrow">FILES / 직접 적용하기</div><div class="links"><a href="../../dist/Minbo-Regular.woff2" download>웹폰트 WOFF2</a><a href="../../dist/MinboSmall-Regular.woff2" download>작은 글자용 WOFF2</a><a href="../../dist/Minbo-Regular.ttf" download>TTF</a><a href="../../dist/review.html">한글 전체 검토표 →</a></div><p class="note">숫자·문장부호는 원본 필체와 유사하게 제작했습니다. 배포 라이선스는 확정 전입니다.</p></section>
+<footer>한글 11,172자 · 호환 자모 51자 · ASCII 95자 / 원본 손글씨에서 추출한 76개 표본 기반</footer>
+</main>
+<script>
+const size=document.querySelector('#size'),variant=document.querySelector('#variant'),editor=document.querySelector('#editor');
+function update(){const px=Number(size.value);document.querySelector('#size-value').value=px+'px';editor.style.fontSize=px+'px';editor.style.fontFamily=(variant.value==='small'||(variant.value==='auto'&&px<=15))?"'Minbo Small',sans-serif":"'Minbo',sans-serif";editor.style.background=px<16?'white':'';}
+size.addEventListener('input',update);variant.addEventListener('change',update);document.querySelectorAll('[data-size]').forEach(b=>b.addEventListener('click',()=>{size.value=b.dataset.size;update()}));editor.addEventListener('change',()=>{editor.value=editor.value.normalize('NFC')});update();
+Promise.all([document.fonts.load("24px 'Minbo'",'한글 Hello 123'),document.fonts.load("7px 'Minbo Small'",'한글 Hello 123')]).then(results=>{if(results.some(r=>r.length===0))throw Error('missing font');document.querySelector('#font-state').textContent='서체 로딩 완료 · 입력 내용을 자유롭게 바꿔보세요.'}).catch(()=>{const el=document.querySelector('#font-state');el.dataset.error='true';el.textContent='서체를 불러오지 못했습니다. 로컬 HTTP 서버로 열고 dist 파일을 확인하세요.'});
+</script>
+</html>

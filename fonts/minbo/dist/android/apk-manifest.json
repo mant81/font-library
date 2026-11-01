@@ -1,0 +1,32 @@
+{
+  "package": "com.example.yumifont",
+  "display_name": "minbo체",
+  "version": "0.1.1",
+  "version_code": 2,
+  "min_sdk": 26,
+  "target_sdk": 35,
+  "file": "dist/android/minbo-font-preview-0.1.1.apk",
+  "bytes": 451179,
+  "sha256": "4d4a5b20ab4ae027b65c849a742e1d5b4650a9b740415e54282be48c0bc2c76d",
+  "signing": "local debug/test certificate; not a store release",
+  "signature_verified": true,
+  "zipalign_verified": true,
+  "permissions": [],
+  "font_sources": {
+    "files": {
+      "minbo_regular.ttf": {
+        "source": "dist/Minbo-Regular.ttf",
+        "sha256": "456cf0b1ab1f99681c0dcf1cb66cd0288cefeca79dedfaa59d4fda23d699bd88"
+      },
+      "minbo_small.ttf": {
+        "source": "dist/MinboSmall-Regular.ttf",
+        "sha256": "54ad8f42b21ea73b9f1b2ab9e16e85b5314c3cfe6f4d4574eb1ae6431be5c2df"
+      }
+    },
+    "device_validation": "not run",
+    "sample": "Java Activity; import into an Android app with minSdk 26 or newer"
+  },
+  "build_tools": "36.0.0",
+  "device_validation": "Android 36 emulator: install, launch, native fonts, 7sp toggle and live input passed; physical device not run",
+  "validation_report": "docs/android/validation.json"
+}

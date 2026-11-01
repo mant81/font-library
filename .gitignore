@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+_workspace/
+*.pyc
+.local/
+examples/android/build/
+fonts/*/examples/android/build/
+_site/
+
+# Handwriting originals, extraction provenance and private review material stay local.
+fonts/*/assets/
+fonts/*/sources/
+fonts/*/docs/*
+!fonts/*/docs/android/
+fonts/*/docs/android/*
+!fonts/*/docs/android/validation.json
+fonts/*/dist/build-manifest.json

@@ -1,0 +1,13 @@
+{
+  "name": "font-library",
+  "mode": "sequential-generation-verification",
+  "based_on": "D:/ai/my_harness/skills/myharness",
+  "external_review": "unavailable: REVIEWERS none (codex runner excluded)",
+  "steps": [
+    {"id":"composition-tests","args":["-m","unittest","discover","-s","tests","-v"]},
+    {"id":"trace-compose-package","args":["scripts/build.py"],"evidence":"dist/build-manifest.json"},
+    {"id":"structure-and-sheets","args":["scripts/validate.py"],"evidence":"docs/validation.json"},
+    {"id":"browser-7px","args":["scripts/browser_check.py"],"evidence":"docs/browser-validation.json"},
+    {"id":"android-font-resources","args":["scripts/package_android.py"],"evidence":"examples/android/font-manifest.json"}
+  ]
+}

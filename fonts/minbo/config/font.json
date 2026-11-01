@@ -1,0 +1,17 @@
+{
+  "version": "0.1.1",
+  "family": "Minbo",
+  "upm": 1000,
+  "stroke": 42,
+  "small_stroke": 78,
+  "source": "assets/source/minbo-handwriting.jpg",
+  "timestamp": 3865881600,
+  "minimum_css_px": 7,
+  "review_status": "experimental-not-visually-approved",
+  "id": "minbo",
+  "display_name": "minbo체",
+  "file_prefix": "Minbo",
+  "font_revision": "0.101",
+  "android_version_code": 2,
+  "android_version_name": "0.1.1"
+}

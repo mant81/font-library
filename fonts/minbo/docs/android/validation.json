@@ -1,0 +1,16 @@
+{
+  "emulator": "private Android 36 Google APIs x86_64",
+  "serial": "emulator-5580",
+  "status": "pass",
+  "started": "2026-11-01T02:19:51.644760+00:00",
+  "physical_device": "not used",
+  "apk_sha256": "4d4a5b20ab4ae027b65c849a742e1d5b4650a9b740415e54282be48c0bc2c76d",
+  "install": "pass",
+  "launch": "pass",
+  "seven_sp_control": "pass",
+  "small_font_auto_selection": "pass",
+  "live_text_input": "pass",
+  "crash_check": "pass",
+  "font_loading": "pass (both native Typeface resources loaded without exception)",
+  "physical_device_validation": "not run"
+}

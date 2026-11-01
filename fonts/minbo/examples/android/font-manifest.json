@@ -1,0 +1,14 @@
+{
+  "files": {
+    "minbo_regular.ttf": {
+      "source": "dist/Minbo-Regular.ttf",
+      "sha256": "456cf0b1ab1f99681c0dcf1cb66cd0288cefeca79dedfaa59d4fda23d699bd88"
+    },
+    "minbo_small.ttf": {
+      "source": "dist/MinboSmall-Regular.ttf",
+      "sha256": "54ad8f42b21ea73b9f1b2ab9e16e85b5314c3cfe6f4d4574eb1ae6431be5c2df"
+    }
+  },
+  "device_validation": "not run",
+  "sample": "Java Activity; import into an Android app with minSdk 26 or newer"
+}

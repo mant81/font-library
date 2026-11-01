@@ -1,0 +1,23 @@
+name: Publish Android APK Release
+on:
+  workflow_dispatch:
+    inputs:
+      font:
+        description: Font folder ID
+        required: true
+        default: minbo
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Publish verified APK and checksum
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FONT_ID: ${{ inputs.font }}
+        run: python scripts/publish_release.py --font "$FONT_ID"
